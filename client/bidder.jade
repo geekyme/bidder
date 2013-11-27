@@ -1,0 +1,45 @@
+head
+	title bidder
+
+body
+	.container
+		.row
+			.col-lg-6
+				{{> roomInfo}}
+			.col-lg-6
+				{{> bidsPanel}}
+
+template(name='roomInfo')
+	div
+		img(src='/hotel-room.jpg')
+			
+template(name='bidsPanel')
+	h1 Place your bid
+	hr
+	p
+		| Highest bidder wins the room. Each click raises bid by ${{bidIncrement}}. Every bid cost you an additional ${{chargePerBid}}}
+	p Your Bid: ${{yourBid}} vs Current Bid: ${{currentBid}}
+	{{#if win}}
+	.alert.alert-success
+		| You are 
+		b winning! 
+		| Watch your bid!
+	{{else}}
+	.alert.alert-danger
+		| You are 
+		b losing! 
+		| Bid more!
+	{{/if}}
+	button.btn.btn-lg.btn-primary(type='button') Bid
+	hr
+	| Revenue Calculation for Bid Placement:
+	table.table.table-bordered.table-striped
+		tbody
+			tr
+				th Total No. of Bids
+				th Total Earnings
+				th Earnings from You
+			tr
+				td {{numberOfBids}}
+				td ${{earned}}
+				td ${{spendingOnBid}}

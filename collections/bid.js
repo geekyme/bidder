@@ -1,0 +1,1 @@
+Bids = new Meteor.Collection('bids');
